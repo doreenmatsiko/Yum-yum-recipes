@@ -3,7 +3,7 @@ from models import User,Recipe_category,Recipe
 
 class UserTest(unittest.TestCase):
     def setUp(self):
-        self.user = User("ruganda", "mubaruganda@gmail.com", "password")
+        self.user = User("matsiko", "dorynnamara@gmail.com", "password")
 
     def test_created_user(self):
         self.assertIsInstance(self.user, User, 'User not created')
@@ -26,7 +26,7 @@ class UserTest(unittest.TestCase):
     def test_edit_recipe_category_successful(self):
         self.user.add_recipe_category("Snacks")
         self.assertEqual(self.user.edit_recipe_category("Snacks","local foods"),"recipe_category not found")
-        
+
     def test_delete_recipe_category_not_found(self):
         self.assertEqual(self.user.delete_recipe_category("not exist"), "recipe_category not found")
 
@@ -34,12 +34,12 @@ class UserTest(unittest.TestCase):
         self.user.add_recipe_category("lunch recipes")
         self.assertEqual(self.user.delete_recipe_category("lunch recipes"),
                          "recipe_category deleted")
-        
+
     def test_view_recipe_category(self):
         self.assertEqual(self.user.view_recipe_category(" "), "recipe_categories is empty")
 
 class Recipe_categoryTest(unittest.TestCase):
-    
+
     def setUp(self):
         self.recipes = Recipe_category("")
 
@@ -59,7 +59,7 @@ class Recipe_categoryTest(unittest.TestCase):
         self.assertEqual(self.recipes.edit_recipe(
             "chicken recipe", "beef recipe"), "no recipe to edit")
 
-   
+
     def test_edit_recipe_edited_succesfully(self):
          self.recipes.add_recipe("pizza")
          self.assertEqual(self.recipes.edit_recipe("chicken", "pizza"), "recipe added successfully")
