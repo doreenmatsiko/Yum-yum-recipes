@@ -14,6 +14,22 @@ def index():
 def login():
     return render_template("login.html")
 
+@app.route("/categories")
+def categories():
+    return render_template("categories.html")
+
+@app.route("/recipes")
+def recipes():
+    return render_template("recipes.html")
+
+@app.route("/details")
+def details():
+    return render_template("details.html")
+
+@app.route("/add_recipe_category")
+def add_recipe_category():
+
+    return render_template("add_recipe_category.html")
 
 
 if __name__ == "__main__":

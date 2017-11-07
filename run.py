@@ -1,15 +1,8 @@
 from flask import Flask, render_template
-import os
-from app import app
 
-#app = Flask(__name__)
-port=int(os.environ.get('PORT', 5000))
-if __name__ == "__main__":
-    app.run()
+app = Flask(__name__)
 app.config['DEBUG'] = True
-app.run(host='0.0.0.0', port=port)
 
-''''
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
@@ -23,6 +16,24 @@ def index():
 @app.route("/login")
 def login():
     return render_template("login.html")
-''''
+
+@app.route("/categories")
+def categories():
+    return render_template("categories.html")
+
+@app.route("/recipes")
+def recipes():
+    return render_template("recipes.html")
+
+@app.route("/details")
+def details():
+    return render_template("details.html")
+
+@app.route("/add_recipe_category", methods=['POST','GET'])
+def add_recipe_category():
+    return render_template("add_recipe_category.html")
 
 
+
+if __name__ == "__main__":
+    app.run()
