@@ -1,10 +1,11 @@
 class User:
-    
+
     def __init__ (self,username,email,password):
         self.username =username
         self.email =email
         self.password =password
         self.recipe_categories =[]
+class category:
 
     def add_recipe_category(self,recipe_category):
         if recipe_category not in self.recipe_categories:
@@ -30,7 +31,7 @@ class User:
         return "recipe_categories is empty"
 
 class Recipe_category:
-    
+
     def __init__(self,title):
         self.title = title
         self.recipes =[]
@@ -46,7 +47,7 @@ class Recipe_category:
             self.recipes= [newrecipe for oldrecipe in self.recipes]
             return "recipe added successfully"
         return "no recipe to edit"
-    
+
     def delete_recipe(self,recipe):
         if recipe in self.recipes:
             self.recipes.remove(recipe)
@@ -59,7 +60,7 @@ class Recipe_category:
         return "no recipe found"
 
 class Recipe:
-      
+
     def __init__(self, title, description):
         self.recipe_title = title
         self.recipe_description = description

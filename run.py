@@ -1,8 +1,9 @@
 from flask import Flask, render_template,flash, redirect, url_for, session, request, logging
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
-from models import User,Recipe
+from models import User,Recipe_category
 
 USERS= {}
+CATEGORIES={}
 
 recipes = {}
 app = Flask(__name__)
@@ -16,16 +17,16 @@ class RegisterForm(Form):
         validators.EqualTo('confirm', message='Passwords do not match')
     ])
     confirm = PasswordField('Confirm Password')
-
 class LoginForm(Form):
-    username = StringField('Username', [validators.Length(min=4, max=25)])
-    password = PasswordField('Password', [
-        validators.DataRequired(),validators.EqualTo('confirm', message='Passwords do not match')
-    ])
+    name = StringField('Name', [validators.Length(min=1, max=50)])
+    password = PasswordField('Password',)
+
+
 
 @app.route('/')
 def home():
     return render_template('home.html')
+
 
 # User Register
 @app.route('/register', methods=['GET', 'POST'])
@@ -61,31 +62,42 @@ def login():
                 session['username'] = username
                 flash('You are now logged in', 'success')
 
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('add_recipe_category'))
             else:
                 error = 'Invalid login'
                 return render_template('login.html', error=error)
     return render_template("login.html")
 
 
-
 @app.route('/dashboard')
 def dashboard ():
-    return render_template('dashboard.html', recipes=recipes)
+    return render_template('categories.html')
 
 
 
-@app.route('/add_recipe', methods=['GET', 'POST'])
-def add_recipe():
-    if request.method == 'POST':
-        recipes[request.form['title']] = Recipe(request.form['title'],request.form['description'])
-        return render_template('dashboard.html', recipes=recipes)
-    return redirect(url_for('dashboard'))
+@app.route('/add_recipe_category', methods=['GET', 'POST'])
+def add_recipe_category():
+    if request.method=='GET':
+        return redirect(url_for('dashboard'))
 
-@app.route('/recipe/<title>', methods=['GET', 'POST'])
-def recipe_details(title):
-    recipe = recipes[title]
-    return render_template("details.html", title=recipe.recipe_title, description=recipe.recipe_description)
+    if request.method =='POST':
+
+        CATEGORIES[request.form['title']] = Recipe_category(request.form['title'])
+        return render_template("categories.html", recipe_category=CATEGORIES)
+
+
+@app.route("/delete_category")
+def delete_recipe_category():
+    pass
+@app.route("/update_category")
+def update_recipe_category():
+    pass
+@app.route("/read_category")
+def read_recipe_category():
+    pass
+
+
+
 
 
 
