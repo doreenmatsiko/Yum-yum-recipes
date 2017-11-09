@@ -1,10 +1,9 @@
 # Yum-yum-recipes
 This app stores your recipes
 This app will make you enjoy your recipes at any time any where in the world
+https://codeclimate.com/github/elgalu/boolean_class.png
 
-https://travis-ci.org/elgalu/boolean_class  https://coveralls.io/r/elgalu/boolean_class
-[![Build Status](https://travis-ci.org/doreenmatsiko/Yum-yum-recipes.svg?branch=master)](https://travis-ci.org/doreenmatsiko/Yum-yum-recipes
-
+[![Build Status](https://travis-ci.org/doreenmatsiko/Yum-yum-recipes.svg?branch=develop)](https://travis-ci.org/doreenmatsiko/Yum-yum-recipes)
 A food recipe is defined a set of instructions for making or preparing something, especially a food dish. eg a recipe for a cake.
 
 The challenge of keeping track of awesome food recipes is a need for many individuals who love to cook and eat good food that requires an innovative and robust solution that will allow them to remember recipes and share with others
