@@ -1,5 +1,7 @@
 import unittest
-from models import User,Recipe_category,Recipe
+from models.user import User
+from models.categories import Category
+from models.recipes import Recipe
 
 class UserTest(unittest.TestCase):
     def setUp(self):
@@ -35,42 +37,39 @@ class UserTest(unittest.TestCase):
         self.assertEqual(self.user.delete_recipe_category("lunch recipes"),
                          "recipe_category deleted")
 
-    def test_view_recipe_category(self):
-        self.assertEqual(self.user.view_recipe_category(" "), "recipe_categories is empty")
 
 class Recipe_categoryTest(unittest.TestCase):
 
     def setUp(self):
-        self.recipes = Recipe_category("")
+        self.title = Category("lunch")
 
     def test_recipe_instantiation(self):
-        self.assertIsInstance(self.recipes, Recipe_category,
+        self.assertIsInstance(self.title,Category,
                               "Failed to instantiate")
 
     def test_add_recipe_added(self):
-            self.assertEqual(self.recipes.add_recipe("pillawo"), "recipe added succesfully")
+            self.assertEqual(self.title.add_recipe("pillawo"), "recipe added succesfully")
 
     def test_add_recipe_exists(self):
-        self.recipes.add_recipe("pizza")
-        self.assertEqual(self.recipes.add_recipe(
+        self.title.add_recipe("pizza")
+        self.assertEqual(self.title.add_recipe(
             "pizza"), "recipe already exists")
 
     def test_edit_recipe_not_found(self):
-        self.assertEqual(self.recipes.edit_recipe(
+        self.assertEqual(self.title.edit_recipe(
             "chicken recipe", "beef recipe"), "no recipe to edit")
 
 
     def test_edit_recipe_edited_succesfully(self):
-         self.recipes.add_recipe("pizza")
-         self.assertEqual(self.recipes.edit_recipe("chicken", "pizza"), "recipe added successfully")
+         self.title.add_recipe("pizza")
+         self.assertEqual(self.title.edit_recipe("pizza", "chicken"), "recipe edited successfully")
 
     def test_delete_recipe_not_found(self):
-          self.assertEqual(self.recipes.delete_recipe(
+          self.assertEqual(self.title.delete_recipe(
             "katogo"), "No recipe to delete")
 
     def test_recipe_item(self):
-        self.recipes.add_recipe("katogo")
-        self.assertEqual(self.recipes.delete_recipe("katogo"), "recipe deleted")
+        self.title.add_recipe("katogo")
+        self.assertEqual(self.title.delete_recipe("katogo"), "recipe deleted")
 
-    def test_view_recipe(self):
-        self.assertEqual(self.recipes.view_recipe(" "), "no recipe found")
+
