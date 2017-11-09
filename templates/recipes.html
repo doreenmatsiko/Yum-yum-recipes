@@ -1,35 +1,81 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block body %}
+<div class="container">
+    <h2>Recipes</h2>
+ <a href =/add_recipe><button type="submit" class="btn btn-primary">Add Recipe</button></a>
+    <div class="panel-group">
+        <div class="panel panel-success">
 
-{% block body %}
-<h1>Recipes</h1>
-<form method="POST" action="{{url_for('add_recipe')}}">
-  <input type="text" name="title">
-  <input type="submit" value=add_recipe>
-</form>
+            <div class="panel-heading">Recipes</div>
 
-  {% for title,recipe in recipe.items() %}
-   <ul>
-    <li>
-      <h4>  <span>{{ recipe.title }}</span>
-        <span>
-          <a href="{{ url_for('delete_recipe',title = title) }}">
-            [Remove]
-          </a>
-        </span>
-        <span>
-          <a href="{{url_for('edit_recipe', title = title)}}">
-            [edit]
-          </a>
-        </span><span>
-          <a href="{{url_for('add_recipe description', title = title)}}">
-            [edit]
-          </a>
-        </span>
+                <hr>
 
-    </li></h4>
-    </ul>
-    {% endfor %}
+                        <table class="table table-striped">
+                                <tr>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                                  <th><h4>Recipes</h4></th>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                                </tr>
+                                {% set descriptionx = session['description'] %}
+                                {% for title, recipe in recipes.items() %}
+
+
+
+                                  <tr>
+                                    <tr>
+                                        <td><a href="{{ url_for('recipe_details', title=title) }}" class="text-muted">
+                                                <h4 class="mb-1">{{ title }}</h4>
+                                            </a></td>
+                                        </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <td>
+                                        <form action="{{ url_for('edit_recipe',title=title) }}" method="get">
+                                        <button type="submit" value="" class="btn btn-default" id="myBtnz" >Edit</button>
+                                      </form>
+                                    </td>
+
+                                    <td>
+                                      <form action="{{ url_for('delete_recipe',title=title ) }}" method="get">
+                                       <button type="submit" value="Delete" class="btn btn-danger" id="myBtn" >Delete</button>
+                                      </form>
+                                    </td>
+                                  </tr>
+                                {% endfor %}
+                              </table>
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="panel-body">
+
+
+        </div>
+
+
+    </div>
+    <!-- End of panel -->
+
+
+
 
 
 {% endblock %}
-

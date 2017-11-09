@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Recipes Categories</h1>
+<form method="POST" action="{{url_for('add_category')}}">
+  <input type="text" name="title" required>
+  <input type="submit" value=add_category>
+</form>
+    {%endblock%}

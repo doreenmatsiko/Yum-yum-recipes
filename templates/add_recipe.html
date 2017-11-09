@@ -1,0 +1,22 @@
+
+           {% extends 'layout.html' %}
+
+{% block body %}
+<div class="panel-group">
+  <div class="panel panel-primary">
+
+      <div class="panel-heading">Recipes</div>
+
+      <div class="panel-body">
+          <form class="form-inline" method="POST" action="/add_recipe">
+              <div class="form-group">
+
+                  <input type="text" class="form-control" name="title"  id="category" placeholder="Recipe" required>
+                  <input type="textbox" class="form-control" rows="4" name="description"  valid="category_desc" placeholder="Description" required>
+
+              </div>
+              <button type="submit" class="btn btn-primary">Add Recipe</button>
+          </form>
+
+{% endblock %}
+

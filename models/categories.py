@@ -2,24 +2,24 @@ class Category:
 
     def __init__(self,title):
         self.title =title
-        self.recipes = []
+        self.recipe_categories=[]
 
-    def add_recipe(self, title):
-        if title not in self.recipes:
-            self.recipes.append(title)
-            return "recipe added succesfully"
-        return "recipe already exists"
+    def add_recipe_category(self,recipe_category):
+        if recipe_category not in self.recipe_categories:
+            self.recipe_categories.append(recipe_category)
+            return "recipe category is added succesfully"
+        return "recipe category already exists"
 
-    def edit_recipe(self,title,new_title):
-        if title in self.recipes:
-            self.recipes= [new_title for title in self.recipes]
-            return "recipe edited successfully"
-        return "no recipe to edit"
+    def edit_recipe_category(self,newname,oldname):
+        if oldname in self.recipe_categories:
+            self.recipe_category =[newname for oldname  in self.recipe_categories]
+            return "recipe_category edited succesfully"
+        return "recipe_category not found"
 
-    def delete_recipe(self,title):
-        if title in self.recipes:
-            self.recipes.remove(title)
-            return "recipe deleted"
-        return "No recipe to delete"
+    def delete_recipe_category(self,recipe_category):
+        if recipe_category in self.recipe_categories:
+            self.recipe_categories.remove(recipe_category)
+            return "recipe_category deleted"
+        return "recipe_category not found"
 
 
