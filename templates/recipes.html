@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Recipes</h1>
+<form method="POST" action="{{url_for('add_recipe')}}">
+  <input type="text" name="title">
+  <input type="submit" value=add_recipe>
+</form>
+
+  {% for title,recipe in recipe.items() %}
+   <ul>
+    <li>
+      <h4>  <span>{{ recipe.title }}</span>
+        <span>
+          <a href="{{ url_for('delete_recipe',title = title) }}">
+            [Remove]
+          </a>
+        </span>
+        <span>
+          <a href="{{url_for('edit_recipe', title = title)}}">
+            [edit]
+          </a>
+        </span><span>
+          <a href="{{url_for('add_recipe description', title = title)}}">
+            [edit]
+          </a>
+        </span>
+
+    </li></h4>
+    </ul>
+    {% endfor %}
+
+
+{% endblock %}
+

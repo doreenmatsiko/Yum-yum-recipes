@@ -7,6 +7,7 @@ from models.recipes import Recipe
 
 USERS= {}
 CATEGORIES={}
+RECIPES={}
 
 recipes = {}
 app = Flask(__name__)
@@ -104,6 +105,26 @@ def edit_category(title):
         return render_template('categories.html', categories = CATEGORIES, title= category.title)
     #IF its a get request we render the edit template to update the data on the form
     return render_template('edit_category.html', title = category.title,category=Category(title))
+
+@app.route('/add_Recipe/<title>',methods=['GET','POST'])
+def add_Recipe(title):
+    if request.method == 'POST':
+        RECIPES[request.form['title']] = Recipe(request.form['title'])
+        return redirect(url_for('recipes_dashboard'))#this is a get request
+    return render_template('recipe_dashboard.html', recipes=RECIPES)
+
+
+
+@app.route('/recipes_dashboard/<title>')
+def recipes_dashboard(title):
+    return render_template('recipes.html',recipes=RECIPES)
+
+
+
+
+
+
+@app.route
 
 @app.route('/logout')
 def logout():
