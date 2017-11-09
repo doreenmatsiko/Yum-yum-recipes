@@ -1,7 +1,6 @@
 # Yum-yum-recipes
 This app stores your recipes
 This app will make you enjoy your recipes at any time any where in the world
-https://codeclimate.com/github/elgalu/boolean_class.png
 
 [![Build Status](https://travis-ci.org/doreenmatsiko/Yum-yum-recipes.svg?branch=develop)](https://travis-ci.org/doreenmatsiko/Yum-yum-recipes)
 A food recipe is defined a set of instructions for making or preparing something, especially a food dish. eg a recipe for a cake.
