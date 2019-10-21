@@ -148,7 +148,7 @@ virtualenv-clone==0.2.6
 wcwidth==0.1.7
 webargs==1.8.1
 webassets==0.12.1
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 Whoosh==2.7.4
 wrapt==1.10.11
 WTForms==2.1
